@@ -7,13 +7,13 @@ app.get('/', (req, res) => {
         city: 'Seattle',
         state: 'WA',
         cuisines: 'Thai, Pan-Asian',
-        pic: 'http://placekitten.com/250/250'
+        pic: '/images/in-n-out-burger.jpeg'
       }, {
         name: 'Coding Cat Cafe',
         city: 'Phoenix',
         state: 'AZ',
         cuisines: 'Coffee, Bakery',
-        pic: 'http://placekitten.com/250/250'
+        pic: '/images/mcdonalds-sign.jpeg'
       }]
       
       res.render('places/index', { places })
@@ -21,3 +21,17 @@ app.get('/', (req, res) => {
   
 
 module.exports = app
+
+// let places = [{
+//   name: 'H-Thai-ML',
+//   city: 'Seattle',
+//   state: 'WA',
+//   cuisines: 'Thai, Pan-Asian',
+//   pic: '/images/in-n-out-burger.jpeg'
+// }, {
+//     name: 'Coding Cat Cafe',
+//     city: 'Phoenix',
+//     state: 'AZ',
+//     cuisines: 'Coffee, Bakery',
+//     pic: '/images/mcdonalds-sign.jpeg'
+// }];
