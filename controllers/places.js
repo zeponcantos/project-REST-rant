@@ -2,9 +2,8 @@ const router = require('express').Router()
 
 // GET /places
 router.get('/', (req, res) => {
-      router.send('GET/places')
-  
-    let places = [{
+      
+    const places = [{
         name: 'H-Thai-ML',
         city: 'Seattle',
         state: 'WA',
