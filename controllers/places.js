@@ -33,11 +33,23 @@ router.get('/', (req, res) => {
       res.render('error404')
     }
     else {
-      res.render('show', { place: places[id] })
+      res.render('show', { place: places[id], id })
     }
     
 
   })
+  
+  router.delete('/:id', (req,res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+      res.render('Error404')
+    } else if (!places[id]) {
+      res.render('Error404')
+    } else {
+      places.splice(id,1)
+      res.redirect('/places') 
+    }
+    })
   
   
   router.post('/', (req, res) => {
