@@ -2,16 +2,15 @@ const React = require('react')
 const Def = require('../default')
 // const router = require('../../controllers/places')
   function index({places}) {
-    
     return (
       <Def>
         <main>
           <h1>PlACES INDEX PAGE</h1>
           <div className='row'> 
-          {places.map((place,index) => (
-           <div className='col-sm-6' key={index}>
+          { places.map(place => (
+           <div className='col-sm-6' key={place._id}>
            <h2>
-             <a href={`/places/${index}`} >
+             <a href={`/places/${place._id}`} >
                {place.name}
              </a>
            </h2>  
