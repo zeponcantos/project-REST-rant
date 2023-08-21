@@ -9,7 +9,7 @@ const Def = require('../default')
           <h1>PlACES INDEX PAGE</h1>
           <div className='row'> 
           {places.map((place,index) => (
-           <div className='col-sm-6'>
+           <div className='col-sm-6' key={index}>
            <h2>
              <a href={`/places/${index}`} >
                {place.name}

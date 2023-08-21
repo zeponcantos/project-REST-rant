@@ -20,25 +20,52 @@ router.get('/', (req, res) => {
       
       
   })
+ 
   router.get('/new', (req, res) => {
-  res.render('places/new')
-  });
+      res.render('places/new')
+      });
 
   router.get('/:id', (req, res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
-      res.render('error404')
+        res.render('error404')
     }
     else if (!places[id]) {
-      res.render('error404')
+        res.render('error404')
     }
     else {
-      res.render('show', { place: places[id], id })
+      res.render('places/show', { place: places[id], id })
     }
-    
+  })
 
+  router.get (`/:id/edit`, (req, res) => {
+    let id = Number(req.params.id)
+    res.render('places/edit' , { place: places[id], id })
   })
   
+  router.put('/:id', (req,res) =>{ 
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+      res.render('Error404')
+    } else if (!places[id]) {
+      res.render('Error404')
+    } else {
+      if (!req.body.pic) {
+        req.body.pic = 'http://placekitten.com/400/400'
+      }
+    
+      if (!req.body.city) {
+        req.body.city = 'Anytown'
+      }
+      if (!req.body.state) {
+        req.body.state = 'USA'
+      }
+      //save new data into places[id]
+      places[id] = req.body
+      res.redirect(`/places/${id}`)
+    }
+    })
+
   router.delete('/:id', (req,res) => {
     let id = Number(req.params.id)
     if (isNaN(id)) {
@@ -50,8 +77,7 @@ router.get('/', (req, res) => {
       res.redirect('/places') 
     }
     })
-  
-  
+
   router.post('/', (req, res) => {
     console.log(req.body)
     if (!req.body.pic) {
